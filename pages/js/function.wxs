@@ -1,0 +1,10 @@
+searchFunction = function (str, patten) {
+  console.log(str)
+  if (patten == '') return true
+  else if (str.indexOf(patten) != -1) return true
+  else return false
+}
+
+module.exports = {
+  searchFunction: searchFunction
+}

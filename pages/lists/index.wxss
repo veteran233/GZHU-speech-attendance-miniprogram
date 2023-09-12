@@ -1,0 +1,63 @@
+/* pages/lists/index.wxss */
+.wxss_list {
+  margin: 10px;
+  margin-bottom: 20px;
+}
+
+.wxss_speech-info-display {
+  display: inline-block;
+
+  vertical-align: top;
+}
+
+.wxss_speech-title {
+  font-size: 20px;
+  text-shadow: #000;
+}
+
+.wxss_speech-info {
+  display: block;
+
+  margin: 0 10px;
+  font-size: 15px;
+  color: #808080;
+  text-shadow: #000;
+}
+
+.wxss_green {
+  display: inline-block;
+
+  padding: 1px;
+  border-radius: 15%;
+  background-color: rgb(50, 128, 50);
+
+  color: #fff;
+}
+
+.wxss_red {
+  display: inline-block;
+
+  padding: 1px;
+  border-radius: 15%;
+  background-color: rgb(255, 50, 50);
+
+  color: #fff;
+}
+
+.wxss_search-box {
+  margin: 0 10px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #eee;
+}
+
+.wxss_search-box-input {
+  height: 30px;
+  text-align: center;
+  color: #808080;
+}
+
+.wxss_select-button {
+  position: absolute;
+  right: 10px;
+}
