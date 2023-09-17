@@ -3,8 +3,8 @@
 <view class="wxss_search-box">
   <input placeholder="搜索" class="wxss_search-box-input" bindinput="getSearchBoxData" />
 </view>
-<view wx:for="{{speechLists}}" wx:if="{{tools.searchFunction(item.name, searchKeyWord)}}" wx:key="id" class="wxss_list">
-  <view class="wxss_speech-title"> {{item.name}} </view>
+<view wx:for="{{speechLists}}" wx:if="{{tools.searchFunction(item.speechName, searchKeyWord)}}" wx:key="id" class="wxss_list">
+  <view class="wxss_speech-title"> {{item.speechName}} </view>
   <view class="wxss_speech-info-display">
     <view class="wxss_speech-info">演讲类型</view>
     <view class="wxss_speech-info">地点</view>
@@ -13,16 +13,16 @@
     <view class="wxss_speech-info">状态</view>
   </view>
   <view class="wxss_speech-info-display">
-    <view class="wxss_speech-info"> {{item.type}} </view>
+    <view class="wxss_speech-info"> {{item.speechType}} </view>
     <view class="wxss_speech-info"> {{item.location}} </view>
     <view class="wxss_speech-info"> {{item.startTime}} </view>
     <view class="wxss_speech-info"> {{item.duration}}分钟 </view>
-    <block wx:if="{{item.state=='空余'}}">
+    <!-- <block wx:if="{{item.state=='空余'}}">
       <view class="wxss_speech-info wxss_green"> {{item.state}} </view>
     </block>
     <block wx:else>
       <view class="wxss_speech-info wxss_red"> {{item.state}} </view>
-    </block>
+    </block> -->
   </view>
   <view class="wxss_speech-info-display">
     <button class="wxss_select-button" style="width: 100px;" disabled="{{item.state=='已满'}}">选择</button>

@@ -5,11 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    speechLists: [
-      { id: 1, name: '导弹设计与开发', type: '科技类', location: '理科南110', startTime: '13:50', duration: 45, state: '空余' },
-      { id: 2, name: '数字化与中国企业', type: '企业类', location: '理科南110', startTime: '13:50', duration: 45, state: '空余' },
-      { id: 3, name: '品牌战略与企业增长', type: '企业类', location: '理科南110', startTime: '13:50', duration: 45, state: '已满' }
-    ],
+    speechLists: [],
     searchKeyWord: '',
     matchKeyWord: true
   },
@@ -18,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.loadSpeechLists()
   },
 
   /**
@@ -73,6 +69,17 @@ Page({
   getSearchBoxData(e) {
     this.setData({
       searchKeyWord: e.detail.value
+    })
+  },
+
+  loadSpeechLists() {
+    wx.request({
+      url: 'http://localhost:23080/speechlists',
+      success: (res) => {
+        this.setData({
+          speechLists: res.data
+        })
+      }
     })
   }
 })
