@@ -1,0 +1,28 @@
+/* pages/reg/index.wxss */
+.wxss_top {
+  display: flex;
+  flex-direction: column;
+}
+
+.wxss_center {
+  margin: 0 auto;
+}
+
+.wxss_desc {
+  margin-top: 50px;
+}
+
+.wxss_input-box {
+  margin: 10px 25%;
+
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+.wxss_button {
+  margin-top: 10px;
+}

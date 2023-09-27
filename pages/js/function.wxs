@@ -4,6 +4,12 @@ searchFunction = function (str, patten) {
   else return false
 }
 
+inJSONArray = function (ja, id) {
+  if (ja.indexOf(id.toString()) != -1) return true;
+  else return false;
+}
+
 module.exports = {
-  searchFunction: searchFunction
+  searchFunction: searchFunction,
+  inJSONArray: inJSONArray
 }

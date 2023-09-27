@@ -10,21 +10,26 @@
     <view class="wxss_speech-info">地点</view>
     <view class="wxss_speech-info">开始时间</view>
     <view class="wxss_speech-info">时长</view>
-    <view class="wxss_speech-info">状态</view>
+    <view class="wxss_speech-info">人数</view>
   </view>
   <view class="wxss_speech-info-display">
     <view class="wxss_speech-info"> {{item.speechType}} </view>
     <view class="wxss_speech-info"> {{item.location}} </view>
     <view class="wxss_speech-info"> {{item.startTime}} </view>
     <view class="wxss_speech-info"> {{item.duration}}分钟 </view>
-    <!-- <block wx:if="{{item.state=='空余'}}">
-      <view class="wxss_speech-info wxss_green"> {{item.state}} </view>
+    <block wx:if="{{item.curN < item.maxN}}">
+      <view class="wxss_speech-info wxss_green"> {{item.curN}}/{{item.maxN}} </view>
     </block>
     <block wx:else>
-      <view class="wxss_speech-info wxss_red"> {{item.state}} </view>
-    </block> -->
+      <view class="wxss_speech-info wxss_red"> {{item.curN}}/{{item.maxN}} </view>
+    </block>
   </view>
   <view class="wxss_speech-info-display">
-    <button class="wxss_select-button" style="width: 100px;" disabled="{{item.state=='已满'}}">选择</button>
+    <block wx:if="{{tools.inJSONArray(selected, item.id)}}">
+      <button class="wxss_select-button" type="warn" size="mini" data-id="{{item.id}}" bind:tap="buttonTabCancel">退选</button>
+    </block>
+    <block wx:else="">
+      <button class="wxss_select-button" type="primary" size="mini" data-id="{{item.id}}" bind:tap="buttonTabAdd">选择</button>
+    </block>
   </view>
 </view>

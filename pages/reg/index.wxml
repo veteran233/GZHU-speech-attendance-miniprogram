@@ -1,0 +1,9 @@
+<!--pages/reg/index.wxml-->
+<view class="wxss_top">
+  <view class="wxss_center wxss_desc">请输入姓名和学号</view>
+  <view>
+    <input value="" placeholder="姓名" class="wxss_input-box" bindinput="getStudentName"/>
+    <input value="" placeholder="学号" class="wxss_input-box" bindinput="getStudentId"/>
+    <button class="wxss_button" bind:tap="buttonTab">确认</button>
+  </view>
+</view>

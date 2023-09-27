@@ -1,4 +1,7 @@
 // pages/lists/index.js
+
+const app = getApp();
+
 Page({
 
   /**
@@ -7,7 +10,7 @@ Page({
   data: {
     speechLists: [],
     searchKeyWord: '',
-    matchKeyWord: true
+    selected: []
   },
 
   /**
@@ -15,6 +18,7 @@ Page({
    */
   onLoad(options) {
     this.loadSpeechLists()
+    this.loadSelected()
   },
 
   /**
@@ -65,13 +69,11 @@ Page({
   onShareAppMessage() {
 
   },
-
   getSearchBoxData(e) {
     this.setData({
       searchKeyWord: e.detail.value
     })
   },
-
   loadSpeechLists() {
     wx.request({
       url: 'http://localhost:23080/speechlists',
@@ -81,5 +83,59 @@ Page({
         })
       }
     })
+  },
+  loadSelected() {
+    wx.request({
+      url: 'http://localhost:23080/selected',
+      method: "POST",
+      data: {
+        'openid': app.globalData.openId
+      },
+      success: (res) => {
+        this.setData({
+          selected: JSON.parse(res.data[0].selected)
+        })
+      }
+    })
+  },
+  buttonTabAdd(e) {
+    wx.request({
+      url: 'http://localhost:23080/submit',
+      method: "POST",
+      data: {
+        'flag': 1,
+        'id': e.currentTarget.dataset.id,
+        'openid': app.globalData.openId
+      },
+      success: () => {
+        this.setData({
+          selected: this.push(this.data.selected, e.currentTarget.dataset.id)
+        })
+      }
+    })
+  },
+  buttonTabCancel(e) {
+    wx.request({
+      url: 'http://localhost:23080/submit',
+      method: "POST",
+      data: {
+        'flag': -1,
+        'id': e.currentTarget.dataset.id,
+        'openid': app.globalData.openId
+      },
+      success: () => {
+        this.setData({
+          selected: this.erase(this.data.selected, e.currentTarget.dataset.id)
+        })
+      }
+    })
+  },
+  push(e, id) {
+    e.push(id.toString())
+    return e
+  },
+  erase(e, id) {
+    e.splice(e.indexOf(id.toString()), 1)
+    return e
   }
 })
